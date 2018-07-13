@@ -1,0 +1,25 @@
+{
+  "name": "bb-oauth-token",
+  "version": "1.0.0",
+  "description": "generate token for bb oauth authentication",
+  "main": "index.js",
+  "scripts": {
+    "dist": "babel src -d dist",
+    "build": "rm -rf node_modules && npm i --production && zip -r lambda.zip package.json dist/ node_modules/",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Pedro Sotero",
+  "license": "ISC",
+  "dependencies": {
+    "request": "^2.87.0",
+    "request-promise": "^4.2.2"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-register": "^6.26.0",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb-base": "^13.0.0",
+    "eslint-plugin-import": "^2.12.0"
+  }
+}

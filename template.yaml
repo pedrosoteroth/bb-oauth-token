@@ -1,0 +1,24 @@
+Description: A starter AWS Lambda function.
+Resources:
+  helloworld:
+    Type: 'AWS::Serverless::Function'
+    Properties:
+      Handler: index.handler
+      Runtime: nodejs6.10
+      CodeUri: .
+      Description: A starter AWS Lambda function.
+      MemorySize: 128
+      Timeout: 10
+  bboauth:
+    Type: AWS::Serverless::Function
+    Properties:
+        Handler: dist/index.handler
+        Runtime: nodejs6.10      
+        CodeUri: .
+        Timeout: 10
+        Events:
+          Api:
+            Type: Api
+            Properties:
+              Path: /bb/oauth/token
+              Method: get
