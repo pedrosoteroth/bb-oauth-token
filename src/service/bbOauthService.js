@@ -1,7 +1,7 @@
 const request = require('request-promise');
 const {
     getPropertiesS3,
-} = require('brcap-properties');
+} = require('brcap-utils');
 
 async function BBOauthToken() {
     const properties = await getPropertiesS3('brasilcap-properties-dev', [{
@@ -13,8 +13,7 @@ async function BBOauthToken() {
     const password = properties.PropertiesAWS.client_secret;
     const url = properties.PropertiesAWS.endPointOAuthBB;
     const registrationAccessToken = properties.PropertiesAWS.appKeyBB;
-
-    return request.post(url, {
+    const response = await request.post(url, {
         auth: {
             username,
             password,
@@ -28,6 +27,8 @@ async function BBOauthToken() {
             scope: 'seguridade.incluir-pagamento',
         },
     });
+
+    return JSON.parse(response);
 }
 
 module.exports = {
